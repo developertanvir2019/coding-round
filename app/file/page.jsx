@@ -3,22 +3,47 @@ import { useState } from "react";
 import { fileData } from "../lib/data/file";
 import { RiFileAddLine } from "react-icons/ri";
 
-const handleAddFile = (id) => {
-  console.log(id);
-};
 const File = () => {
   const [data, setData] = useState(fileData);
+  const handleAddFile = (id) => {
+    const name = prompt("Enter name");
+    const updateTree = (list) => {
+      return list.map((node) => {
+        if (node.id == id) {
+          return {
+            ...node,
+            children: [
+              ...node.children,
+              {
+                id: Date.now().toString(),
+                name: name,
+                isFile: true,
+                children: [],
+              },
+            ],
+          };
+        }
+        if (node.children) {
+          return { ...node, children: updateTree(node.children) };
+        }
+        return node;
+      });
+    };
+
+    setData((prev) => updateTree(prev));
+  };
   return (
     <div className="select-none">
-      <List files={data} />
+      <List files={data} handleAddFile={handleAddFile} />
     </div>
   );
 };
 
 export default File;
 
-const List = ({ files }) => {
+const List = ({ files, handleAddFile }) => {
   const [isExpand, setIsExpand] = useState({});
+
   return (
     <div>
       {files?.map((file) => (
@@ -48,7 +73,9 @@ const List = ({ files }) => {
             )}
           </div>
           <div className={`${isExpand?.[file.name] ? "block" : "hidden"}`}>
-            {file?.children && <List files={file?.children} />}
+            {file?.children && (
+              <List files={file?.children} handleAddFile={handleAddFile} />
+            )}
           </div>
         </div>
       ))}
