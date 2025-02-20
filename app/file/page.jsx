@@ -1,11 +1,16 @@
 "use client";
 import { useState } from "react";
 import { fileData } from "../lib/data/file";
+import { RiFileAddLine } from "react-icons/ri";
 
+const handleAddFile = (id) => {
+  console.log(id);
+};
 const File = () => {
+  const [data, setData] = useState(fileData);
   return (
     <div className="select-none">
-      <List files={fileData} />
+      <List files={data} />
     </div>
   );
 };
@@ -35,6 +40,12 @@ const List = ({ files }) => {
               </span>
             )}
             <span>{file.name}</span>
+            {file?.isFile && (
+              <RiFileAddLine
+                onClick={() => handleAddFile(file?.id)}
+                className="cursor-pointer"
+              />
+            )}
           </div>
           <div className={`${isExpand?.[file.name] ? "block" : "hidden"}`}>
             {file?.children && <List files={file?.children} />}
