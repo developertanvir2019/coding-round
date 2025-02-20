@@ -10,8 +10,8 @@ const Navbar = () => {
       <div
         className={`max-md:absolute  max-md:top-14 left-0 bg-white w-full ${
           expand
-            ? "opacity-100 scale-100 pointer-events-auto"
-            : "opacity-0 scale-95 pointer-events-none"
+            ? "max-md:opacity-100 max-md:scale-100 max-md:pointer-events-auto"
+            : "max-md:opacity-0 max-md:scale-95 max-md:pointer-events-none"
         } transition-all duration-200`}
       >
         <div className=" font-semibold  flex flex-col md:flex-row items-start md:items-center justify-center gap-3 ">
@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className="flex justify-center gap-4 items-center">
         <Link
           href="#"
-          className="bg-cyan-700 text-white font-semibold px-3 py-1 rounded-md"
+          className="bg-cyan-700 text-nowrap text-white font-semibold px-3 py-1 rounded-md"
         >
           Sign Up
         </Link>
