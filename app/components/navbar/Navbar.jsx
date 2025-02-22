@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className=" font-semibold  flex flex-col md:flex-row items-start md:items-center justify-center gap-3 ">
           <Link href="/">Home</Link>
           <Link href="/file">File-Explorer</Link>
-          <Link href="/about">About</Link>
+          <Link href="/search">Search</Link>
           <Link href="/contact">Contact</Link>
         </div>
       </div>
