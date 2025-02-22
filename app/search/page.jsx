@@ -5,8 +5,13 @@ const Search = () => {
   const [input, setInput] = useState("");
   const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
+  const [cache, setCache] = useState({});
 
   const fetchData = async () => {
+    if (cache[input]) {
+      setData(cache?.input);
+      return;
+    }
     const response = await fetch(
       `https://dummyjson.com/recipes/search?q=${input}`
     );
@@ -15,9 +20,14 @@ const Search = () => {
     }
     const recipe = await response.json();
     setData(recipe?.recipes);
+    setCache((prev) => ({ ...prev, [input]: recipe?.recipes }));
   };
+
   useEffect(() => {
-    fetchData();
+    const timer = setTimeout(fetchData, 400);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [input]);
   console.log("tanvir", data);
   return (
