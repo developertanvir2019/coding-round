@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Lift from "../components/lift/Lift";
 
 const TopScroll = () => {
   //
@@ -27,6 +28,7 @@ const TopScroll = () => {
         ></div>
       </div>
       <div>
+        <Lift />
         <div className="w-full h-44 bg-purple-300"></div>
         <div className="w-full h-44 bg-blue-400"></div>
         <div className="w-full h-44 bg-purple-900"></div>
