@@ -18,7 +18,7 @@ const Navbar = () => {
           <Link href="/">Home</Link>
           <Link href="/file">File-Explorer</Link>
           <Link href="/search">Search</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/topscroll">Scroll</Link>
         </div>
       </div>
 
