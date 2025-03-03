@@ -6,7 +6,15 @@ const Navbar = () => {
   const [expand, setExpand] = useState(false);
   return (
     <div className="flex justify-between items-center relative py-4">
-      <h3 className="text-2xl font-bold z-20 bg-white ">Tanvir</h3>
+      <h3 className="text-2xl font-bold z-20 bg-gradient-to-r from-orange-500 to-cyan-400 px-3 py-1 bg-clip-text text-transparent">
+        Tanvir
+      </h3>
+      <h3
+        style={{ clipPath: `polygon(10% 26%, 100% 34%, 100% 61%, 10% 66%)` }}
+        className="px-3 py-2 bg-blue-500 text-xl text-white font-bold"
+      >
+        ahmed
+      </h3>
       <div
         className={`max-md:absolute  max-md:top-14 left-0 bg-white w-full ${
           expand
